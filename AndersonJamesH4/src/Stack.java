@@ -2,7 +2,6 @@
 public class Stack {
 	private Node origin=null;
 	private Node end=null;
-	private int size=0;
 	public Stack(){}
 
 	public void push(Node node) {
@@ -11,11 +10,9 @@ public class Stack {
     		end=node;
     	}else{
     		node.setNext(origin);
-    		if (size==1)
-    			end=origin;
+    		origin.setPrevious(node);
     		origin=node;
     	}
-    	size++;
     }
 	public Node pop(){
 		Node temp = origin;
@@ -49,15 +46,18 @@ public class Stack {
 		return list;
 	}
 	
-	private String printReverse(){
+	public String printReverse(){
 		String list="";
-		Node current=end;
-		while(current.getPrevious()!=null){
-			list+=current.getContent()+", ";
-    		current=current.getPrevious();
-    	}
-		list+=current.getContent();
-		return list;
+		if (end!=null){
+			Node current=end;
+			while(current.getPrevious()!=null){
+				list+=current.getContent()+", ";
+	    		current=current.getPrevious();
+	    	}
+			list+=current.getContent();
+			return list;
+		}
+		return "The list is empty";
 	}
 	
 	private void deleteNode(Node node){
@@ -70,6 +70,11 @@ public class Stack {
 		else
 			end=node.getPrevious();
 	}
-	
+	public Node getOrigin(){
+		return origin;
+	}
+	public Node getEnd(){
+		return end;
+	}
 	
 }
