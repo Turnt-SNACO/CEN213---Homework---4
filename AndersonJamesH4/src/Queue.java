@@ -45,17 +45,7 @@ public class Queue {
 	public Node peek(){
 		return origin;
 	}
-	
-	public Stack moveToStack(){
-		Stack target = new Stack();
-		Node current = end;
-		while (current!=null){
-			target.push(current);
-			current=current.getPrevious();
-		}
-		return target;
-	}
-	
+
 	/**
 	 * <b><i>deleteNode</i></b> - Deletes a node from the list.
 	 * <p>
@@ -76,25 +66,6 @@ public class Queue {
 		size--;
 	}
 	
-	/** 
-	 * <b><i>findNode</i></b> - Searches for node based on content
-	 * <p>
-	 * Given a string value this method will find if that node exists in the current list.
-	 * <p>
-	 * @param content - string that is being searched for.
-	 * @return <b>Node</b> with content if exists, else <b>null</b>
-	 * @author james_2pes9af
-	 */
-	public Node findNode(String content){
-		Node current = origin;
-		while(current.getNext()!=null){
-    		if (current.getContent()==content)
-    			return current;
-    		else
-    			current=current.getNext();
-		}
-		return null;
-	}
 	
 	/**
 	 * <b><i>printForward</i></b> - Prints the contents of the list, going forward.
@@ -159,40 +130,11 @@ public class Queue {
 		end=null;
 	}
 	
-	/**
-	 * <b><i>insertBefore</i></b> - Inserts Node (insert) before Node (node).
-	 * <p>
-	 * @param insert - node being inserted
-	 * @param node - Node that will come after (insert).
-	 * @author james_2pes9af
-	 */
-	public void insertBefore(Node insert, Node node){
-		if (node==origin)
-			origin=insert;
-		else{
-			insert.setPrevious(node.getPrevious());
-			node.getPrevious().setNext(insert);
-		}
-		node.setPrevious(insert);
-		insert.setNext(node);
-		size++;
+	public Node getOrigin(){
+		return origin;
 	}
-	
-	/**
-	 * <b><i>insertAfter</i></b> - INserts Node (insert) after Node (node).
-	 * <p>
-	 * @param insert - Node being inserted
-	 * @param node - Node that will come before (insert).
-	 * @author james_2pes9af
-	 */
-	public void insertAfter(Node insert, Node node){
-		if (end==node)
-			end=insert;
-		else
-			insert.setNext(node.getNext());
-		node.setNext(insert);
-		insert.setPrevious(node);
-		size++;
+	public Node getEnd(){
+		return end;
 	}
 	
 }
