@@ -6,16 +6,16 @@ public class Queue {
 	public Queue(){}
 	
 	/**
-	 * <b><i>getSize</i></b> - Gets number of nodes in the list/
+	 * <b><i>getSize</i></b> - Gets number of nodes in the queue
 	 * <p>
-	 * @return <b>size</b> - count of nodes in list.
+	 * @return <b>int</b>
 	 */
 	public int getSize(){
 		return size;
 	}
 	
 	/**
-	 * <b><i>addToEnd</i></b> - Adds a node to the end of the list.
+	 * <b><i>enqueue</i></b> - Adds a node to the end of the queue.
 	 * <p>
 	 * @param node - node to be added
 	 * @author james_2pes9af
@@ -36,20 +36,32 @@ public class Queue {
     	size++;
     }
 	
+	/**
+	 * <b><i>dequeue</b></i> - looks ar the first node in the queue and removes it.
+	 * <p>
+	 * @return <b>Node</b>
+	 * @author james_2pes9af
+	 */
 	public Node dequeue(){
 		Node temp = origin;
 		deleteNode(origin);
 		return temp;
 	}
 	
+	/**
+	 * <b><i>peek</i></b> - looks at the first node in the queue
+	 * <p>
+	 * @return <b>Node<b>
+	 * @author james_2pes9af
+	 */
 	public Node peek(){
 		return origin;
 	}
 
 	/**
-	 * <b><i>deleteNode</i></b> - Deletes a node from the list.
+	 * <b><i>deleteNode</i></b> - Deletes a node from the queue.
 	 * <p>
-	 * Sets the pointers of the node before and after to point at each other leaving no node pointed to the targeted node for deletion.
+	 * Since this is a queue and order is paramount, this method has been made private to ensure queue order is kept.
 	 * <p>
 	 * @param node - The Node targeted for deletion.
 	 * @author james_2pes9af
@@ -66,11 +78,10 @@ public class Queue {
 		size--;
 	}
 	
-	
 	/**
-	 * <b><i>printForward</i></b> - Prints the contents of the list, going forward.
+	 * <b><i>printForward</i></b> - Prints the contents of the queue, going forward.
 	 * <p>
-	 * Iterates forward through the list and generates a string that is comma delimited containing the content of each node.
+	 * Iterates forward through the queue and generates a string that is comma delimited containing the content of each node.
 	 * <p>
 	 * @return <b>String</b> - contains each content in a single string separated by commas.
 	 * @author james_2pes9af
@@ -90,9 +101,9 @@ public class Queue {
 	}
 	
 	/**
-	 * <b><i>printReverse</i></b> - Prints the contents of the list, going backwards.
+	 * <b><i>printReverse</i></b> - Prints the contents of the queue, going backwards.
 	 * <p>
-	 * Iterates backwards through the list and generates a string that is comma delimited containing the content of each node.
+	 * Iterates backwards through the queue and generates a string that is comma delimited containing the content of each node.
 	 * <p>
 	 * @return <b>String</b> - contains each content in a single string separated by commas.
 	 * @author james_2pes9af
@@ -112,13 +123,11 @@ public class Queue {
 	}
 	
 	/**
-	 * <b><i>detelteList</i></b> - Deletes the list.
-	 * <p>
-	 * Iterates through all elements in the list and sets pointers to be null then sets origin and end to null.
+	 * <b><i>detelteList</i></b> - Deletes the entire queue.
 	 * <p>
 	 * @author james_2pes9af
 	 */
-	public void deleteList(){
+	public void deleteQueue(){
 		Node current=origin;
 		while(current!=null){
 			current.setPrevious(null);
