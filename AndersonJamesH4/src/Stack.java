@@ -2,6 +2,7 @@
 public class Stack {
 	private Node origin=null;
 	private Node end=null;
+	private int size=0;
 	public Stack(){}
 
 	public void push(Node node) {
@@ -13,6 +14,7 @@ public class Stack {
     		origin.setPrevious(node);
     		origin=node;
     	}
+    	size++;
     }
 	public Node pop(){
 		Node temp = origin;
@@ -76,5 +78,7 @@ public class Stack {
 	public Node getEnd(){
 		return end;
 	}
-	
+	public int getSize(){
+		return size;
+	}
 }
