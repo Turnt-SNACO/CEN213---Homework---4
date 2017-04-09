@@ -21,7 +21,7 @@ public class Queue {
 	 * @author james_2pes9af
 	 */
 	public void enqueue(Node node) {
-    	if (origin==null){  
+    	if (origin==null){ 
     		origin=node;
     		end=node;
     	}else{
